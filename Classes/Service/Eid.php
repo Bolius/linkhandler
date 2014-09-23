@@ -185,8 +185,13 @@ class Eid {
 						? $this->generateWorkspacePreviewUri($GLOBALS['TSFE']->cObj->lastTypoLinkLD['totalURL'])
 						: $linkString;
 
-		$fullUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $queryString;
+		// If queryString is empty, fall back to raw T3 url
+		if($queryString === ''){
+			$recordId = explode(':', $this->linkHandlerValue);
+			$queryString = 'index.php?id=' . (int) $recordId[1];
+		}
 
+		$fullUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $queryString;
 		header('Location: ' . $fullUrl);
 		exit();
 	}
