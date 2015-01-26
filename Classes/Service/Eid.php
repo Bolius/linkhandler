@@ -100,7 +100,7 @@ class Eid {
 
 		$this->typoLinkSettings = array (
 			'returnLast' => 'url',
-			'additionalParams' => '&L=' . $this->languageId
+			'additionalParams' => (GeneralUtility::_GP('L')) ? '&L=' . $this->languageId : '',
 		);
 
 		$this->initTSFE();

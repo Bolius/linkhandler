@@ -107,8 +107,8 @@ class TceMain {
 				$linkParamValue = 'record:' . $table . ':' . $id;
 
 				$queryString = '&eID=linkhandlerPreview&linkParams=' . urlencode ($linkParamValue . $wsPreviewValue);
-				$languageParam = '&L=' . $recordArray['sys_language_uid'];
-				$queryString  .= $languageParam . '&authCode=' . \TYPO3\CMS\Core\Utility\GeneralUtility::stdAuthCode($linkParamValue . $wsPreviewValue . intval($recordArray['sys_language_uid']), '', 32);
+				$languageParam = isset($recordArray['sys_language_uid']) ? '&L=' . $recordArray['sys_language_uid']: '';
+				$queryString .= $languageParam . '&authCode=' . \TYPO3\CMS\Core\Utility\GeneralUtility::stdAuthCode($linkParamValue . $wsPreviewValue . intval($recordArray['sys_language_uid']), '', 32);
 
 				$GLOBALS['_POST']['viewUrl'] = $previewDomain . '/index.php?id=' . $previewPageId . $queryString . '&y=';
 				$GLOBALS['_POST']['popViewId_addParams'] = $queryString;
