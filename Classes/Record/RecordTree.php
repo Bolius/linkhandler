@@ -102,8 +102,11 @@ class RecordTree extends \TYPO3\CMS\Backend\Tree\View\BrowseTreeView {
 				$arrCol = '<td></td>';
 			}
 			$addPassOnParams = $this->getaddPassOnParams();
-
-            if($this->browselistObj->thisConfig['tx_linkhandler.'][$this->browselistObj->act.'.']['listTables'] != 'pages') {
+			
+            if(
+	            $this->browselistObj->thisConfig['tx_linkhandler.'][$this->browselistObj->act.'.']['listTables'] != 'pages' OR
+	            $this->browselistObj->thisConfig['tx_linkhandler.'][$this->browselistObj->act.'.']['treatAsRecords'] == 0
+            ) {
                 $aOnClick = 'return jumpToUrl(\'' . $this->thisScript . '?act=' .
                 $GLOBALS['SOBE']->browser->act .
                 '&editorNo=' . $GLOBALS['SOBE']->browser->editorNo .
