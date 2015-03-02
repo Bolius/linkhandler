@@ -105,7 +105,7 @@ class RecordTree extends \TYPO3\CMS\Backend\Tree\View\BrowseTreeView {
 
             if(
 	            $this->browselistObj->thisConfig['tx_linkhandler.'][$this->browselistObj->act.'.']['listTables'] != 'pages' OR
-	            $this->browselistObj->thisConfig['tx_linkhandler.'][$this->browselistObj->act.'.']['treatAsRecords'] != 1
+	            $this->browselistObj->thisConfig['tx_linkhandler.'][$this->browselistObj->act.'.']['treatAsRecords'] == 1
             ) {
                 $aOnClick = 'return jumpToUrl(\'' . $this->thisScript . '?act=' .
                 $GLOBALS['SOBE']->browser->act .
