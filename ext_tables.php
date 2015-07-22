@@ -28,4 +28,12 @@ mod.tx_linkhandler {
 		previewPageId = 1
 	}
 }
+
+mod.tx_linkhandler {
+	bolius_gallery {
+		label = Bolius_gallery
+		listTables = sys_file_collection
+		previewPageId = 24
+	}
+}
 ');

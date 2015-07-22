@@ -100,8 +100,10 @@ class Eid {
 
 		$this->typoLinkSettings = array (
 			'returnLast' => 'url',
-			'additionalParams' => (GeneralUtility::_GP('L')) ? '&L=' . $this->languageId : '',
+			'additionalParams' => (GeneralUtility::_GP('L')) ? '&L=' . $this->languageId : ''
 		);
+
+		$this->typoLinkSettings['additionalParams'] = '&previewMode=1';
 
 		$this->initTSFE();
 
@@ -193,6 +195,7 @@ class Eid {
 		}
 
 		$fullUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $queryString;
+
 		header('Location: ' . $fullUrl);
 		exit();
 	}
