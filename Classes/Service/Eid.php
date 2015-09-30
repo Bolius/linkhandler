@@ -103,8 +103,15 @@ class Eid {
 			'additionalParams' => (GeneralUtility::_GP('L')) ? '&L=' . $this->languageId : ''
 		);
 
-		$this->typoLinkSettings['additionalParams'] = '&previewMode=1';
+		$objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
 
+		/** @var \TYPO3\CMS\Extbase\Configuration\BackendConfigurationManager $configurationManager */
+		$configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\BackendConfigurationManager');
+
+		if($configurationManager->getDefaultBackendStoragePid() == 24){
+			$this->typoLinkSettings['additionalParams'] = '&previewMode=1';
+		}
+		
 		$this->initTSFE();
 
 			// extract the linkhandler and WS preview parameters
